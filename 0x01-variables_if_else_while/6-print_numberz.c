@@ -6,12 +6,11 @@
  */
 int main(void)
 {
-	char digit = '0';
+	int i;
 
-	while (digit <= '9')
+	for (i = 48; i < 58; i++)
 	{
-		putchar(digit);
-		digit++;
+		putchar(i);
 	}
 	putchar('\n');
 	return (0);
