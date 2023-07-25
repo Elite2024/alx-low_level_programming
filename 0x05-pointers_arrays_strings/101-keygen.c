@@ -4,26 +4,14 @@
 
 #define PASSWORD_LENGTH 8
 
-// Function to generate a random character between 'a' and 'z' (inclusive)
-char getRandomChar() {
-    return 'a' + rand() % 26;
-}
-
-// Function to generate a random digit between '0' and '9' (inclusive)
-char getRandomDigit() {
-    return '0' + rand() % 10;
-}
-
 // Function to generate a random valid password
 void generateRandomPassword(char *password) {
+    const char charset[] = "abcdefghijklmnopqrstuvwxyz0123456789";
+    int charset_length = sizeof(charset) - 1;
+
     for (int i = 0; i < PASSWORD_LENGTH; i++) {
-        // Randomly decide whether to generate a lowercase letter or a digit
-        int choice = rand() % 2;
-        if (choice == 0) {
-            password[i] = getRandomChar();
-        } else {
-            password[i] = getRandomDigit();
-        }
+        int random_index = rand() % charset_length;
+        password[i] = charset[random_index];
     }
     password[PASSWORD_LENGTH] = '\0'; // Null-terminate the string
 }
@@ -37,4 +25,3 @@ int main() {
     printf("Random Password: %s\n", password);
     return 0;
 }
-
