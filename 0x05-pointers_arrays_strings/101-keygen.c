@@ -4,12 +4,13 @@
 
 #define PASSWORD_LENGTH 8
 
-// Function to generate a random valid password
+/* Function to generate a random valid password */
 void generateRandomPassword(char *password) {
     const char charset[] = "abcdefghijklmnopqrstuvwxyz0123456789";
     int charset_length = sizeof(charset) - 1;
 
-    for (int i = 0; i < PASSWORD_LENGTH; i++) {
+    int i; // Declare the loop variable outside the loop for ISO C90 compatibility
+    for (i = 0; i < PASSWORD_LENGTH; i++) {
         int random_index = rand() % charset_length;
         password[i] = charset[random_index];
     }
